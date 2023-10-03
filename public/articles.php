@@ -5,13 +5,14 @@ include_once "$dir/partial/header.php";
 ?>
 
 <h1>Articles</h1>
-<form>
-    <div class="mb-3">
-        <label for="search" class="form-label">Search</label>
-        <input type="text" class="form-control" name="search" id="search">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+<form class="input-group mb-3">
+  <input type="text" class="form-control" name="search" placeholder="Search" aria-label="search" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  </div>
 </form>
+
 <div class="list-group">
 <?php
 $search = $_GET['search'] ?? '';

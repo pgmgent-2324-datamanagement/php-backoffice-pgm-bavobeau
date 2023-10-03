@@ -9,10 +9,7 @@ if(count($_POST)) {
   $birthdate = ($_POST['birthdate'] ? $_POST['birthdate'] : null);
   $ban_id = $_POST['ban_id'];
 
-  print_r($_POST);
-
   addUser($firstname, $lastname, $email, $birthdate, $ban_id);
-
 }
 ?>
 
@@ -23,7 +20,7 @@ if(count($_POST)) {
   <form class="user" method="POST">
     <input type="text" name="firstname" placeholder="firstname">
     <input type="text" name="lastname" placeholder="lastname">
-    <input type="text" name="email" placeholder="email">
+    <input type="email" name="email" placeholder="email">
     <input type="date" name="birthdate" placeholder="birthdate">
     <select type="options" name="ban_id">
       <?=

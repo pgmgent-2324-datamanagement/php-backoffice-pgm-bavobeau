@@ -3,7 +3,7 @@
     <input type="hidden" name="id" value="<?= $user->id ?>">
     <input type="text" name="firstname" value="<?= $user->firstname ?>" placeholder='firstname'>
     <input type="text" name="lastname" value="<?= $user->lastname ?>" placeholder='lastname'>
-    <input type="text" name="email" value="<?= $user->email ?>" placeholder='email'>
+    <input type="email" name="email" value="<?= $user->email ?>" placeholder='email'>
     <input type="date" name="birthdate" value="<?= $user->birthdate ?>">
     <select type="options" name="ban_id" value=<?= $user->ban_id ?>>
       <?=
