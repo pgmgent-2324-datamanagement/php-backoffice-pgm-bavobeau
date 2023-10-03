@@ -1,14 +1,15 @@
 <li class="user">
-  <form class="user" id="user_<?= $user->id ?>">
-    <input type="text" id="firstname" placeholder="<?= $user->firstname ?>">
-    <input type="text" id="lastname" placeholder="<?= $user->lastname ?>">
-    <input type="text" id="email" placeholder="<?= $user->email ?>">
-    <input type="date" id="birthdate" placeholder="<?= $user->birthdate ?>">
-    <select type="options" id="ban_id" placeholder="<?= $user->ban_id ?>">
+  <form class="user" method="POST" id="user_<?= $user->id ?>">
+    <input type="hidden" name="id" value="<?= $user->id ?>">
+    <input type="text" name="firstname" value="<?= $user->firstname ?>" placeholder='firstname'>
+    <input type="text" name="lastname" value="<?= $user->lastname ?>" placeholder='lastname'>
+    <input type="text" name="email" value="<?= $user->email ?>" placeholder='email'>
+    <input type="date" name="birthdate" value="<?= $user->birthdate ?>">
+    <select type="options" name="ban_id" value=<?= $user->ban_id ?>>
       <?=
       $bannen = getBannen();
       foreach($bannen as $ban) {
-        echo "<option value=$ban->id>$ban->name</option>";
+        echo "<option value='$ban->id' " . ($user->ban_id === $ban->id ? 'selected' : '' ) . ">$ban->name</option>";
       }
       ?>
     </select>
