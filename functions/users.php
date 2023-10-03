@@ -34,3 +34,16 @@ function addUser($firstname, $lastname, $email, $birthdate, $ban_id) {
   //redirect naar users.php
   header('Location: users.php');
 }
+
+function deleteUser() {
+  global $db;
+
+  $id = $_POST['id'];
+
+  $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
+  $stmt->bindValue(':id', $id);
+  $stmt->execute();
+
+  //redirect naar users.php
+  header('Location: users.php');
+}

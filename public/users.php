@@ -2,7 +2,7 @@
 require_once '../app.php';
 include_once "$dir/partial/header.php";
 
-if(count($_POST)) {
+if(isset($_POST['submit'])) {
   $firstname = $_POST['firstname'];
   $lastname = ($_POST['lastname'] ? $_POST['lastname'] : null);
   $email = ($_POST['email'] ? $_POST['email'] : null);
@@ -11,6 +11,13 @@ if(count($_POST)) {
 
   addUser($firstname, $lastname, $email, $birthdate, $ban_id);
 }
+
+if(isset($_POST['delete'])) {
+  $id = $_POST['id'];
+
+  deleteUser($id);
+}
+
 ?>
 
 <h1>Dashboard</h1>
@@ -30,7 +37,7 @@ if(count($_POST)) {
       }
       ?>
     </select>
-    <button type="submit">Submit</button>
+    <button type="submit">Toevoegen</button>
   </form>
 
 <h2>Leden</h2>
