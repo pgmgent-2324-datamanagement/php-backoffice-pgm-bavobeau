@@ -40,13 +40,14 @@ function editUser($id, $firstname, $lastname, $email, $birthdate, $ban_id) {
   global $db;
 
   //sql
-  $sql = "INSERT INTO `users` (`firstname`, `lastname`, `email`, `birthdate`, `ban_id`) VALUES (:firstname, :lastname, :email, :birthdate, :ban_id)";
+  $sql = "UPDATE `users` SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email, `birthdate` = :birthdate, `ban_id` = :ban_id where id = :id";
 
   //prepare
   $stmt = $db->prepare($sql);
 
   //bind
   if (count($_POST)) {
+    $stmt->bindParam(":id", $id);
     $stmt->bindParam(":firstname", $firstname);
     $stmt->bindParam(":lastname", $lastname);
     $stmt->bindParam(":email", $email);
@@ -61,12 +62,12 @@ function editUser($id, $firstname, $lastname, $email, $birthdate, $ban_id) {
   header('Location: users.php');
 }
 
-function deleteUser() {
+function deleteUser($id) {
   global $db;
 
   $id = $_POST['id'];
 
-  $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
+  $stmt = $db->prepare("DELETE FROM `users` WHERE id = :id");
   $stmt->bindValue(':id', $id);
   $stmt->execute();
 

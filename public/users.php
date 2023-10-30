@@ -2,7 +2,7 @@
 require_once '../app.php';
 include_once "$dir/partial/header.php";
 
-if(isset($_POST['submit'])) {
+if(isset($_POST['add'])) {
   $firstname = $_POST['firstname'];
   $lastname = ($_POST['lastname'] ? $_POST['lastname'] : null);
   $email = ($_POST['email'] ? $_POST['email'] : null);
@@ -17,10 +17,10 @@ if(isset($_POST['edit'])) {
   $firstname = $_POST['firstname'];
   $lastname = ($_POST['lastname'] ? $_POST['lastname'] : null);
   $email = ($_POST['email'] ? $_POST['email'] : null);
-  $birthdate = ($_POST['birthdate'] ? $_POST['birthdate'] : null);
+  $birthdate = $_POST['birthdate'];
   $ban_id = $_POST['ban_id'];
 
-  editUser($firstname, $lastname, $email, $birthdate, $ban_id);
+  editUser($id, $firstname, $lastname, $email, $birthdate, $ban_id);
 }
 
 if(isset($_POST['delete'])) {
@@ -48,7 +48,7 @@ if(isset($_POST['delete'])) {
       }
       ?>
     </select>
-    <button type="submit">Toevoegen</button>
+    <button name="add" type="submit">Toevoegen</button>
   </form>
 
 <h2>Leden</h2>
