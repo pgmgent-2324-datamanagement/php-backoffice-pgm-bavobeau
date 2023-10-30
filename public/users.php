@@ -12,6 +12,17 @@ if(isset($_POST['submit'])) {
   addUser($firstname, $lastname, $email, $birthdate, $ban_id);
 }
 
+if(isset($_POST['edit'])) {
+  $id = $_POST['id'];
+  $firstname = $_POST['firstname'];
+  $lastname = ($_POST['lastname'] ? $_POST['lastname'] : null);
+  $email = ($_POST['email'] ? $_POST['email'] : null);
+  $birthdate = ($_POST['birthdate'] ? $_POST['birthdate'] : null);
+  $ban_id = $_POST['ban_id'];
+
+  editUser($firstname, $lastname, $email, $birthdate, $ban_id);
+}
+
 if(isset($_POST['delete'])) {
   $id = $_POST['id'];
 

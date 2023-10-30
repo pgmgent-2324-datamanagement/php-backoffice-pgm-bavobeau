@@ -1,1 +1,1 @@
-<input type="text" id="name_<?= $ban->id ?>" placeholder="<?= $ban->name ?>">
+<li id="name_<?= $ban->id ?>"><?= $ban->name ?></li>

@@ -13,7 +13,7 @@
       }
       ?>
     </select>
-    <button name="submit" type="submit">Submit</button>
+    <button name="edit" type="submit">Submit</button>
     <button name="delete" type="submit">Delete</button>
   </form>
 </li>

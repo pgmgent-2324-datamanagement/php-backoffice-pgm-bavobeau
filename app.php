@@ -18,3 +18,4 @@ include_once "$dir/functions/global.php";
 include_once "$dir/functions/articles.php";
 include_once "$dir/functions/bannen.php";
 include_once "$dir/functions/users.php";
+include_once "$dir/functions/roles.php";
