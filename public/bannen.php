@@ -1,75 +1,91 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['person']) && $_SESSION['person'] != 'admin') {
+if (!isset($_SESSION['person']) && $_SESSION['person'] != 'admin') {
   header('location: ./login.php');
 }
 
 require_once '../app.php';
 include_once "$dir/partial/header.php";
 
-//deze hash kan opgehaald worden uit de database via de login 
-//of uit de .env file als je bijvoorbeeld maar 1 gebruiker hebt
-$correct_user = 'admin';
-$correct_pass_hash = '$2y$10$B76Y6i8/7I2mS5IglXUfROrjx1Iu6mDsxgt7XYvNoh4HzDsZfdyvu';
+$bannen = getBannen();
+$rollen = getRoles();
 
-$login = $_POST['login']  ?? '';
-$password = $_POST['password'] ?? '';
+if (isset($_POST['add_role'])) {
+  $name = $_POST['name'];
 
-//echo password_hash($password, PASSWORD_DEFAULT);
-
-if($login && $password) {
-    if($login == $correct_user && password_verify($password, $correct_pass_hash) ) {
-        echo 'correct';
-        $_SESSION['person'] = $login;
-    } else {
-        $_SESSION['person'] = null;
-        echo 'incorrect'; 
-    }
+  addRole($name);
 }
 
-$person = $_SESSION['person'] ?? '';
+if (isset($_POST['edit_role'])) {
+  $id = $_POST['id'];
+  $name = $_POST['name'];
+
+  updateRole($id, $name);
+}
+
+if (isset($_POST['delete_role'])) {
+  $id = $_POST['id'];
+
+  deleteRole($id);
+}
+
+if (isset($_POST['add_ban'])) {
+  $name = $_POST['name'];
+
+  addBan($name);
+}
+
+if (isset($_POST['edit_ban'])) {
+  $id = $_POST['id'];
+  $name = $_POST['name'];
+
+  updateBan($id, $name);
+}
+
+if (isset($_POST['delete_ban'])) {
+  $id = $_POST['id'];
+
+  deleteBan($id);
+}
 
 ?>
 
-<h1>Bannen</h1>
+<h1>Bannen & rollen</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Bannen</h2>
 
-<form method="POST">
-  <div class="mb-3 row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="staticEmail" name="login" value="email@example.com">
+      <form method="POST" class="row mb-4">
+        <input type="text" class="form-control col" name="name" placeholder="nieuwe ban">
+        <div class="input-group-append col">
+          <button class="btn btn-success" name="add_ban" type="submit">Toevoegen</button>
+        </div>
+      </form>
+
+      <?php foreach ($bannen as $ban) {
+        include "$dir/views/bannen/item.php";
+      }
+      ?>
+    </div>
+
+    <div class="col">
+      <h2>Rollen</h2>
+
+      <form method="POST" class="row mb-4">
+        <input type="text" class="form-control col" name="name" placeholder="nieuwe rol">
+        <div class="input-group-append col">
+          <button class="btn btn-success" name="add_ban" type="submit">Toevoegen</button>
+        </div>
+      </form>
+      <?php foreach ($rollen as $role) {
+        include "$dir/views/rollen/item.php";
+      }
+      ?>
     </div>
   </div>
-  <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" name="password">
-    </div>
-  </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-<h1>Rollen</h1>
-
-<form method="POST">
-  <div class="mb-3 row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="staticEmail" name="login" value="email@example.com">
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" name="password">
-    </div>
-  </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-
-
+</div>
 <?php
 
 include_once "$dir/partial/footer.php";

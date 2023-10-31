@@ -31,6 +31,6 @@
       ?>
       <div class="form-check"><label class="form-check-label" for="<?= $role->id; ?>"><input class="form-check-input" type="checkbox" name="roles[]" id="<?= $role->id; ?>" value="<?= $role->id; ?>" <?= $is_selected ?>><?= $role->name; ?></label></div>
     <?php endforeach; ?>
-  <button name="edit" type="submit">Submit</button>
-  <button name="delete" type="submit">Delete</button>
+  <button class="btn btn-success" name="edit" type="submit">Bewerken</button>
+  <button class="btn btn-warning" name="delete" type="submit">Verwijderen</button>
 </form>

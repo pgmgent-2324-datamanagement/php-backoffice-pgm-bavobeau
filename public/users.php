@@ -10,16 +10,6 @@ include_once "$dir/partial/header.php";
 
 $bannen = getBannen();
 
-if(isset($_POST['add'])) {
-  $firstname = $_POST['firstname'];
-  $lastname = ($_POST['lastname'] ? $_POST['lastname'] : null);
-  $email = ($_POST['email'] ? $_POST['email'] : null);
-  $birthdate = ($_POST['birthdate'] ? $_POST['birthdate'] : null);
-  $ban_id = $_POST['ban_id'];
-
-  addUser($firstname, $lastname, $email, $birthdate, $ban_id);
-}
-
 if(isset($_POST['delete'])) {
   $id = $_POST['id'];
 

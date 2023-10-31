@@ -101,3 +101,12 @@ function deleteUser($id) {
   //redirect naar users.php
   header('Location: users.php');
 }
+
+function getCountFromUsers() {
+  global $db;
+
+  $stmt = $db->prepare('SELECT COUNT(id) FROM users');
+  $stmt->execute();
+  $result = $stmt->fetch();
+  return $result['count'];
+}

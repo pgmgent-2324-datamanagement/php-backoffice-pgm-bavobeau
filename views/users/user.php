@@ -16,7 +16,7 @@
     <input type="date" class="form-control" id="birthdate" name="birthdate" value="">
   </div>
   <label for="ban">Ban</label>
-  <select class="form-select" type="options" name="ban-id" >
+  <select class="form-select" type="options" name="ban_id" >
     <?php foreach($bannen as $ban) {
       echo "<option value='$ban->id'>$ban->name</option>";
     }
@@ -26,6 +26,6 @@
     <?php foreach($roles as $role) : ?>
       <div class="form-check"><label class="form-check-label" for="<?= $role->id; ?>"><input class="form-check-input" type="checkbox" name="roles[]" id="<?= $role->id; ?>" value="<?= $role->id; ?>"><?= $role->name; ?></label></div>
     <?php endforeach; ?>
-  <button class="btn btn-success" name="edit" type="submit">Toevoegen</button>
+  <button class="btn btn-success" name="add" type="submit">Toevoegen</button>
   <button class="btn btn-warning" name="cancel" type="submit">Annuleren</button>
 </form>
