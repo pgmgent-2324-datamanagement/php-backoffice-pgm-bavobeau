@@ -76,7 +76,7 @@ if (isset($_POST['delete_ban'])) {
       <form method="POST" class="row mb-4">
         <input type="text" class="form-control col" name="name" placeholder="nieuwe rol">
         <div class="input-group-append col">
-          <button class="btn btn-success" name="add_ban" type="submit">Toevoegen</button>
+          <button class="btn btn-success" name="add_role" type="submit">Toevoegen</button>
         </div>
       </form>
       <?php foreach ($rollen as $role) {
