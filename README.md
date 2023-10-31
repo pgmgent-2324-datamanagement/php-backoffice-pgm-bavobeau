@@ -1,4 +1,20 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/33GVuwh_)
+# custom cms voor de ksa door Bavo Beaumon
+
+## Features
+mogelijkheid om leden toe te voegen en te verwijderen en te bewerken
+mogelijkheid om bannen toe te voegen en te verwijderen en te bewerken
+mogelijkheid om rollen toe te voegen en te verwijderen en te bewerken
+mogelijkheid om met many to many relaties te werken leden en rollen
+mogelijkheid on to many leden en bannen
+mogelijkheid om een login systeem te gebruiken
+mogelijkheid om een basis statistiek te zien
+geen sql injection mogelijk
+
+## wip
+bestand uploaden
+sorteren
+filteren
+
 Start the project
 ```ddev start```
 
@@ -15,7 +31,7 @@ Port: 9002
 Login: root 
 Pass: root
 ```
-login 
+# login 
 ```
 username: admin
 password: admin
