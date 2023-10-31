@@ -15,6 +15,7 @@
 - sorteren
 - filteren
 
+## setup
 Start the project
 ```ddev start```
 
@@ -31,7 +32,7 @@ Port: 9002
 Login: root 
 Pass: root
 ```
-# login 
+login 
 ```
 username: admin
 password: admin
