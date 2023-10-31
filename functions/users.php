@@ -1,12 +1,27 @@
 <?php
 
-function getUsers() {
+function getUsers($search = '') {
   global $db;
 
   $sql = "SELECT * FROM users";
+  if($search) {
+    $sql .= " WHERE firstname LIKE :search OR lastname LIKE :search OR email LIKE :search";
+  }
   $stmt = $db->prepare($sql);
+  if($search) {
+    $stmt->bindValue(":search", "%$search%");
+  }
   $stmt->execute();
   return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getUserById($id) {
+  global $db;
+
+  $stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
+  $stmt->bindValue(':id', $id);
+  $stmt->execute();
+  return $stmt->fetch(PDO::FETCH_OBJ);
 }
 
 function addUser($firstname, $lastname, $email, $birthdate, $ban_id) {
@@ -35,7 +50,7 @@ function addUser($firstname, $lastname, $email, $birthdate, $ban_id) {
   header('Location: users.php');
 }
 
-function editUser($id, $firstname, $lastname, $email, $birthdate, $ban_id) {
+function updateUser($id, $firstname, $lastname, $email, $birthdate, $ban_id, $roles) {
   //db connectie
   global $db;
 
@@ -57,6 +72,18 @@ function editUser($id, $firstname, $lastname, $email, $birthdate, $ban_id) {
 
   //execute
   $stmt->execute();
+
+  //delete all roles before new roles are added to prevent duplicate roles for a user
+  $stmt = $db->prepare("DELETE FROM `role_user` WHERE user_id = :user_id");
+  $stmt->bindParam(":user_id", $id);
+  $stmt->execute();
+
+  foreach($roles as $role) {
+    $stmt = $db->prepare("INSERT INTO `role_user` (`user_id`, `role_id`) VALUES (:user_id, :role_id)");
+    $stmt->bindParam(":role_id", $role);
+    $stmt->bindParam(":user_id", $id);
+    $stmt->execute();
+  }
 
   //redirect naar users.php
   header('Location: users.php');

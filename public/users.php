@@ -8,6 +8,8 @@ if(!isset($_SESSION['person']) && $_SESSION['person'] != 'admin') {
 require_once '../app.php';
 include_once "$dir/partial/header.php";
 
+$bannen = getBannen();
+
 if(isset($_POST['add'])) {
   $firstname = $_POST['firstname'];
   $lastname = ($_POST['lastname'] ? $_POST['lastname'] : null);
@@ -18,17 +20,6 @@ if(isset($_POST['add'])) {
   addUser($firstname, $lastname, $email, $birthdate, $ban_id);
 }
 
-if(isset($_POST['edit'])) {
-  $id = $_POST['id'];
-  $firstname = $_POST['firstname'];
-  $lastname = ($_POST['lastname'] ? $_POST['lastname'] : null);
-  $email = ($_POST['email'] ? $_POST['email'] : null);
-  $birthdate = $_POST['birthdate'];
-  $ban_id = $_POST['ban_id'];
-
-  editUser($id, $firstname, $lastname, $email, $birthdate, $ban_id);
-}
-
 if(isset($_POST['delete'])) {
   $id = $_POST['id'];
 
@@ -37,32 +28,26 @@ if(isset($_POST['delete'])) {
 
 ?>
 
-<h1>Dashboard</h1>
+<h1>Leden</h1>
 
-<h2>Nieuw lid</h2>
+<div class="input-group-append">
+  <a href="add_user.php" class="btn btn-success" type="submit">Nieuw lid</a>
+</div>
 
-  <form class="user" method="POST">
-    <input type="text" name="firstname" placeholder="firstname">
-    <input type="text" name="lastname" placeholder="lastname">
-    <input type="email" name="email" placeholder="email">
-    <input type="date" name="birthdate" placeholder="birthdate">
-    <select type="options" name="ban_id">
-      <?=
-      $bannen = getBannen();
-      foreach($bannen as $ban) {
-        echo "<option value=$ban->id>$ban->name</option>";
-      }
-      ?>
-    </select>
-    <button name="add" type="submit">Toevoegen</button>
-  </form>
+<h2>Zoek door leden</h2>
+<form class="input-group mb-3">
+  <input type="text" class="form-control" name="search" placeholder="Search" aria-label="search" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  </div>
+</form>
 
-<h2>Leden</h2>
-<ul>
+<ul class="list-group">
 <?php
-  $users = getUsers();
+$search = $_GET['search'] ?? '';
+$users = getUsers($search);
   foreach($users as $user) {
-    include "$dir/views/users/user.php";
+    include "$dir/views/users/item.php";
   }
 ?>
 </ul>

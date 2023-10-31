@@ -19,11 +19,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link align-middle px-0">
-                <i class="fs-4 fa fa-fw fa-users"></i> <span class="ms-1 d-none d-sm-inline">Customers</span>
-            </a>
-        </li>
-        <li class="nav-item">
             <a href="users.php" class="nav-link align-middle px-0">
                 <i class="fs-4 fa fa-fw fa-users"></i> <span class="ms-1 d-none d-sm-inline">Leden</span>
             </a>
@@ -33,10 +28,10 @@
     <div class="dropdown pb-4">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
             <img src="https://github.com/mdo.png" alt="user" width="30" height="30" class="rounded-circle">
-            <span class="d-none d-sm-inline mx-1">user</span>
+            <span class="d-none d-sm-inline mx-1">Admin</span>
         </a>
         <ul>
-            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+            <li><a class="dropdown-item" href="logout.php">Uitloggen</a></li>
         </ul>
     </div>
 </div>
