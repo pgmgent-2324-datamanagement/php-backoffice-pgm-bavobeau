@@ -17,8 +17,9 @@ if(isset($_POST['add'])) {
   $email = ($_POST['email'] ? $_POST['email'] : null);
   $birthdate = ($_POST['birthdate'] ? $_POST['birthdate'] : null);
   $ban_id = $_POST['ban_id'];
+  $roles = $_POST['roles'];
 
-  addUser($firstname, $lastname, $email, $birthdate, $ban_id);
+  addUser($firstname, $lastname, $email, $birthdate, $ban_id, $roles);
 }
 
 if(isset($_POST['cancel'])) {

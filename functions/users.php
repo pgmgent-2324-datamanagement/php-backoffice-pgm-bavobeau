@@ -24,7 +24,7 @@ function getUserById($id) {
   return $stmt->fetch(PDO::FETCH_OBJ);
 }
 
-function addUser($firstname, $lastname, $email, $birthdate, $ban_id) {
+function addUser($firstname, $lastname, $email, $birthdate, $ban_id, $roles) {
   //db connectie
   global $db;
 
@@ -45,6 +45,13 @@ function addUser($firstname, $lastname, $email, $birthdate, $ban_id) {
 
   //execute
   $stmt->execute();
+
+  foreach($roles as $role) {
+    $stmt = $db->prepare("INSERT INTO `role_user` (`user_id`, `role_id`) VALUES (:user_id, :role_id)");
+    $stmt->bindParam(":role_id", $role);
+    $stmt->bindParam(":user_id", $id);
+    $stmt->execute();
+  }
 
   //redirect naar users.php
   header('Location: users.php');
@@ -105,8 +112,7 @@ function deleteUser($id) {
 function getCountFromUsers() {
   global $db;
 
-  $stmt = $db->prepare('SELECT COUNT(id) FROM users');
+  $stmt = $db->prepare('SELECT COUNT(id) as count FROM users');
   $stmt->execute();
-  $result = $stmt->fetch();
-  return $result['count'];
+  return $stmt->fetch(PDO::FETCH_ASSOC);
 }

@@ -1,4 +1,4 @@
-<form class="user" method="POST">
+<form class="user" method="POST" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="firstname" class="form-label">Voornaam</label>
     <input type="text" class="form-control" id="firstname" name="firstname" value="" placeholder='voornaam'>
@@ -14,6 +14,10 @@
   <div class="mb-3">
     <label for="birtdate" class="form-label">Geboortedatum</label>
     <input type="date" class="form-control" id="birthdate" name="birthdate" value="">
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">foto</label>
+    <input type="file" class="form-control" id="image" name="image">
   </div>
   <label for="ban">Ban</label>
   <select class="form-select" type="options" name="ban_id" >
