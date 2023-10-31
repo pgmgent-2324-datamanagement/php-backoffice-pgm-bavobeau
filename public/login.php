@@ -7,7 +7,7 @@ include_once "$dir/partial/header.php";
 //deze hash kan opgehaald worden uit de database via de login 
 //of uit de .env file als je bijvoorbeeld maar 1 gebruiker hebt
 $correct_user = $_ENV['ADMIN_USER'];
-$correct_pass_hash = crypt($_ENV['ADMIN_PSW'], PASSWORD_DEFAULT);
+$correct_pass_hash = $_ENV['ADMIN_PSW'];
 
 $login = $_POST['login']  ?? '';
 $password = $_POST['password'] ?? '';
@@ -34,7 +34,7 @@ $person = $_SESSION['person'] ?? '';
 <div class="mb-3 row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="staticEmail" name="login" value="email@example.com">
+      <input type="text" class="form-control" id="staticEmail" name="login" value="admin">
     </div>
   </div>
   <div class="mb-3 row">

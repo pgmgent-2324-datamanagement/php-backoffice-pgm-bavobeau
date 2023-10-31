@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link align-middle px-0">
+            <a href="bannen.php" class="nav-link align-middle px-0">
                 <i class="fs-4 fa fa-fw fa-list"></i> <span class="ms-1 d-none d-sm-inline">Bannen & rollen</span>
             </a>
         </li>
@@ -31,12 +31,12 @@
         
     </ul>
     <div class="dropdown pb-4">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
             <img src="https://github.com/mdo.png" alt="user" width="30" height="30" class="rounded-circle">
             <span class="d-none d-sm-inline mx-1">user</span>
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <ul>
+            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
         </ul>
     </div>
 </div>
