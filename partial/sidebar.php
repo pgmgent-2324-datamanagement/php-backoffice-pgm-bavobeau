@@ -15,7 +15,7 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link align-middle px-0">
-                <i class="fs-4 fa fa-fw fa-list"></i> <span class="ms-1 d-none d-sm-inline">Bannen</span>
+                <i class="fs-4 fa fa-fw fa-list"></i> <span class="ms-1 d-none d-sm-inline">Bannen & rollen</span>
             </a>
         </li>
         <li class="nav-item">
