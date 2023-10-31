@@ -46,13 +46,6 @@ function addUser($firstname, $lastname, $email, $birthdate, $ban_id, $roles) {
   //execute
   $stmt->execute();
 
-  foreach($roles as $role) {
-    $stmt = $db->prepare("INSERT INTO `role_user` (`user_id`, `role_id`) VALUES (:user_id, :role_id)");
-    $stmt->bindParam(":role_id", $role);
-    $stmt->bindParam(":user_id", $id);
-    $stmt->execute();
-  }
-
   //redirect naar users.php
   header('Location: users.php');
 }

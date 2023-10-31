@@ -1,4 +1,4 @@
-<form method="POST row">
+<form method="POST">
   <input type="hidden" name="id" value="<?= $role->id ?>">
   <input type="text" class="form-control col" name="name" value="<?= $role->name ?>">
   <div class="input-group-append col">
